@@ -674,10 +674,7 @@ function genProxyGroups(proxies: Proxy[], meta = true) {
     groups[0].proxies.push('👆🏻 ‍指定')
   }
   groups.push({ name: '🛩️ ‍墙内', proxies: ['DIRECT', ...reject, '✈️ ‍起飞'], type: 'select' })
-  // 去除“广告”分组
-  // groups.push({ name: '💩 ‍广告', proxies: [...reject, ...meta ? ['PASS'] : [], '🛩️ ‍墙内', '✈️ ‍起飞'], type: 'select' })
-  // 去除“B站”分组
-  /*
+  groups.push({ name: '💩 ‍广告', proxies: [...reject, ...meta ? ['PASS'] : [], '🛩️ ‍墙内', '✈️ ‍起飞'], type: 'select' })
   groups.push({
     name: '📺 ‍B站',
     proxies: [
@@ -689,7 +686,7 @@ function genProxyGroups(proxies: Proxy[], meta = true) {
     ],
     type: 'select',
   })
-  */
+
   groups.push({
     name: '🤖 ‍AI',
     proxies: [
