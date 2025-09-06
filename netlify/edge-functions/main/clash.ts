@@ -264,9 +264,9 @@ const FROM_CLASH = createPure({
       ...Array.isArray(o['allowed-ips']) && o['allowed-ips'].length && { 'allowed-ips': o['allowed-ips'] as string[] },
       ...pickNumber(o, 'workers', 'mtu', 'persistent-keepalive', 'refresh-server-ip-interval'),
       ...isRecord(o['amnezia-wg-option']) &&
-        {
-          'amnezia-wg-option': o['amnezia-wg-option'],
-        },
+      {
+        'amnezia-wg-option': o['amnezia-wg-option'],
+      },
       ...pickTrue(o, 'remote-dns-resolve'),
       ...Array.isArray(o.dns) && o.dns.length && { dns: o.dns as string[] },
       ...udp,
@@ -280,7 +280,7 @@ const FROM_CLASH = createPure({
       ...pickNonEmptyString(o, 'password', 'private-key', 'private-key-passphrase'),
       ...Array.isArray(o['host-key']) && o['host-key'].length && { 'host-key': o['host-key'] as string[] },
       ...Array.isArray(o['host-key-algorithms']) && o['host-key-algorithms'].length &&
-        { 'host-key-algorithms': o['host-key-algorithms'] as string[] },
+      { 'host-key-algorithms': o['host-key-algorithms'] as string[] },
     }
   },
   anytls(o: unknown): AnyTLS {
@@ -298,13 +298,13 @@ const FROM_CLASH = createPure({
   },
 })
 
-function checkType<T extends Proxy['type']>(o: unknown, type: T): asserts o is { type: T; [key: string]: unknown } {
+function checkType<T extends Proxy['type']>(o: unknown, type: T): asserts o is { type: T;[key: string]: unknown } {
   if (!(isRecord(o) && 'type' in o)) throw new Error('Invalid proxy')
   if (o.type !== type) throw new Error(`Proxy type is not ${type}: ${o.type}`)
 }
 
 function baseFrom<T extends Proxy['type']>(
-  o: { type: T; [key: string]: unknown },
+  o: { type: T;[key: string]: unknown },
 ): ProxyBase & { port: number; type: T } {
   if (!('name' in o && 'server' in o && 'port' in o)) throw new Error('Invalid proxy')
   return {
@@ -319,7 +319,7 @@ function baseFrom<T extends Proxy['type']>(
 }
 
 function baseFromForPorts<T extends Proxy['type']>(
-  o: { type: T; [key: string]: unknown },
+  o: { type: T;[key: string]: unknown },
 ): ProxyBase & PortOrPorts & { type: T } {
   if (!('name' in o && 'server' in o)) throw new Error('Invalid proxy')
   const ports = {
@@ -339,7 +339,7 @@ function baseFromForPorts<T extends Proxy['type']>(
 }
 
 function baseFromForPortRange<T extends Proxy['type']>(
-  o: { type: T; [key: string]: unknown },
+  o: { type: T;[key: string]: unknown },
 ): ProxyBase & PortOrPortRange & { type: T } {
   if (!('name' in o && 'server' in o)) throw new Error('Invalid proxy')
   const ports = {
@@ -359,7 +359,7 @@ function baseFromForPortRange<T extends Proxy['type']>(
 }
 
 function pluginFrom(
-  o: { type: 'ss'; [key: string]: unknown },
+  o: { type: 'ss';[key: string]: unknown },
 ): Option<ObfsPlugin | V2rayPlugin | GostPlugin | ShadowTlsPlugin | RestlsPlugin> {
   const { plugin } = o
   const opts = o['plugin-opts'] as Record<string, unknown> | undefined
@@ -686,6 +686,7 @@ function genProxyGroups(proxies: Proxy[], meta = true) {
     ],
     type: 'select',
   })
+
   groups.push({
     name: '🤖 ‍AI',
     proxies: [
@@ -697,7 +698,7 @@ function genProxyGroups(proxies: Proxy[], meta = true) {
     ],
     type: 'select',
   })
-  groups.push({ name: '🌐 ‍未知站点', proxies: ['✈️ ‍起飞', '🛩️ ‍墙内', '💩 ‍广告'], type: 'select' })
+  groups.push({ name: '🌐 ‍未知站点', proxies: ['🛩️ ‍墙内', '✈️ ‍起飞'], type: 'select' }) // 移除 💩广告
   for (const [k, v] of entries) {
     groups.push({
       name: k,
@@ -717,6 +718,7 @@ function genProxyGroups(proxies: Proxy[], meta = true) {
   groups[0].proxies.push('DIRECT', ...reject)
   return groups
 }
+
 
 export function toClash(
   proxies: Proxy[],
@@ -740,8 +742,7 @@ export function toClash(
       ? [
         ...counts[2] > counts[1]
           ? [
-            `# 排除了 ${counts[2] - counts[1]} 个 Clash${meta ? '.Meta' : ''} 不支持的节点${
-              count_unsupported ? `: ${Object.entries(count_unsupported).map(([k, v]) => `${v} ${k}`).join(', ')}` : ''
+            `# 排除了 ${counts[2] - counts[1]} 个 Clash${meta ? '.Meta' : ''} 不支持的节点${count_unsupported ? `: ${Object.entries(count_unsupported).map(([k, v]) => `${v} ${k}`).join(', ')}` : ''
             }\n`,
           ]
           : [],
