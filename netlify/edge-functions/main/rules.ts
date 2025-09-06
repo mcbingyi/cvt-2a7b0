@@ -22,6 +22,9 @@ export const RULES = `rules:
 - DOMAIN,router.asus.com,DIRECT
 - DOMAIN,www.asusrouter.com,DIRECT
 - DOMAIN-SUFFIX,hiwifi.com,DIRECT
+- DOMAIN-SUFFIX,xibei686888shnxryt.com,DIRECT
+- DOMAIN-SUFFIX,xibei369888ertyrtyuyui.com,DIRECT
+- DOMAIN-SUFFIX,190v1.com.com,DIRECT
 - DOMAIN-SUFFIX,leike.cc,DIRECT
 - DOMAIN-SUFFIX,miwifi.com,DIRECT
 - DOMAIN-SUFFIX,my.router,DIRECT
@@ -7976,8 +7979,6 @@ export const RULES = `rules:
 - IP-CIDR,101.198.200.0/21,🛩️ ‍墙内,no-resolve
 - IP-CIDR,101.198.208.0/20,🛩️ ‍墙内,no-resolve
 - IP-CIDR,101.199.196.0/22,🛩️ ‍墙内,no-resolve
-- DOMAIN-SUFFIX,xibei686888shnxryt.com,🛩️ ‍墙内
-- DOMAIN-SUFFIX,xibei369888ertyrtyuyui.com,🛩️ ‍墙内
 - GEOIP,CN,🛩️ ‍墙内
 - MATCH,🌐 ‍未知站点
 `
