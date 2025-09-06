@@ -103,6 +103,7 @@ export const RULES = `rules:
 - DOMAIN-KEYWORD,twitter,✈️ ‍起飞
 - DOMAIN-KEYWORD,whatsapp,✈️ ‍起飞
 - DOMAIN-KEYWORD,youtube,✈️ ‍起飞
+- DOMAIN-KEYWORD,xibei,🌐 ‍未知站点
 - DOMAIN-SUFFIX,gfwlist.start,✈️ ‍起飞
 - DOMAIN-SUFFIX,000webhost.com,✈️ ‍起飞
 - DOMAIN-SUFFIX,030buy.com,✈️ ‍起飞
